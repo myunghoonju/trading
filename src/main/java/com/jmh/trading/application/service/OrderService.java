@@ -1,4 +1,4 @@
-package com.jmh.trading.domain.service;
+package com.jmh.trading.application.service;
 
 import org.springframework.stereotype.Service;
 

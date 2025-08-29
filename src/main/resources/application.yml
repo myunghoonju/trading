@@ -1,2 +1,6 @@
 server:
   port: 0
+
+upbit:
+  url: https://api.upbit.com
+  path: /v1/candles/days
