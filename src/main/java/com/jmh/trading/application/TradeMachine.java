@@ -19,7 +19,7 @@ public class TradeMachine {
 
     @Scheduled(fixedDelay = 3_000L)
     public void work() {
-      String calculate = simpleMovingAverage.calculate();
-      log.info("Running BotService" + calculate);
+      simpleMovingAverage.calculate(5, 20);
+      log.info("Running BotService {}", 1);
     }
 }

@@ -1,11 +1,11 @@
-package com.jmh.trading.application.service.strategy.ma;
+package com.jmh.trading.application.service.strategy.bb;
 
 import com.jmh.trading.application.service.dto.candle.CandlesDto;
 import com.jmh.trading.application.service.strategy.StrategyProvider;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExponentialMovingAverage extends StrategyProvider {
+public class SellingStrategy extends StrategyProvider {
 
     @Override
     public double calculate(int shortDay, int longDay) {

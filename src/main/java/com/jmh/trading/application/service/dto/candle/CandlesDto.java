@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -20,6 +23,14 @@ public class CandlesDto {
   }
 
   public static CandlesDto of(List<Candle> candles) {
-    return CandlesDto.builder().candles(candles).build();
+    if (isEmpty(candles)) {
+      return null;
+    }
+
+    candles.sort(Comparator.comparingLong(Candle::getTimeStamp));
+
+    return CandlesDto.builder()
+                     .candles(candles)
+                     .build();
   }
 }

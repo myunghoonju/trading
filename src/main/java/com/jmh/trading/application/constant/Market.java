@@ -4,7 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum Market {
+
   USDT_BTC("USDT-BTC"),
+  KRW_POLYX("KRW-POLYX"),
   KRW_BTC("KRW-BTC")
   ;
 
@@ -12,5 +14,9 @@ public enum Market {
 
   Market(String market) {
     this.market = market;
+  }
+
+  public String market() {
+    return getMarket();
   }
 }
