@@ -2,7 +2,7 @@ package com.jmh.trading.application.service;
 
 import com.jmh.trading.application.service.api.TradeApiClient;
 import com.jmh.trading.application.service.dto.candle.CandlesDto;
-import com.jmh.trading.common.config.RetrofitClient;
+import com.jmh.trading.common.config.RetrofitClientFactory;
 import com.jmh.trading.common.config.property.UpbitProperty;
 import com.jmh.trading.common.exception.ApiException;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,8 @@ public class ClientService {
   }
 
   public CandlesDto candles(int days, String market) {
-    TradeApiClient client = RetrofitClient.getCli(upbit.getUrl())
-                                          .create(TradeApiClient.class);
+    TradeApiClient client = RetrofitClientFactory.client(upbit.getUrl())
+                                                 .create(TradeApiClient.class);
     try {
       return CandlesDto.of(client.candles(upbit.getPath(), days, market)
                                  .execute()

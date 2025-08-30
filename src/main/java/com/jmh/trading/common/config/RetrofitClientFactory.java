@@ -9,11 +9,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class RetrofitClient {
+public class RetrofitClientFactory {
 
     private final OkHttpClient okHttpClient;
 
-    public RetrofitClient() {
+    public RetrofitClientFactory() {
         this.okHttpClient = new OkHttpClient().newBuilder()
                                               .connectionPool(new ConnectionPool(1, 1, TimeUnit.SECONDS))
                                               .readTimeout(1L, TimeUnit.SECONDS)
@@ -21,8 +21,8 @@ public class RetrofitClient {
                                               .build();
     }
 
-    public static Retrofit getCli(String url) {
-        return new RetrofitClient().createCli(url);
+    public static Retrofit client(String url) {
+        return new RetrofitClientFactory().createCli(url);
     }
 
     private Retrofit createCli(String url) {
